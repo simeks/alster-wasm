@@ -15,10 +15,15 @@ set(alster_sources
 )
 
 add_executable(alster-wasm ${alster_sources})
-add_custom_command(TARGET alster-wasm POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy
-	${CMAKE_SOURCE_DIR}/index.html
-	${CMAKE_BINARY_DIR}/index.html
+target_link_libraries(alster-wasm PUBLIC glfw)
+target_link_options(alster-wasm PRIVATE
+    -sUSE_WEBGPU
+    -sUSE_GLFW=3
+    -sASYNCIFY
+    -sALLOW_MEMORY_GROWTH
+    --js-library ${CMAKE_SOURCE_DIR}/src/lib.js
 )
+# Output emscripten html template
+set_target_properties(alster-wasm PROPERTIES SUFFIX ".html")
 
 
