@@ -1,0 +1,8 @@
+---
+BasedOnStyle: Google
+IndentPPDirectives: AfterHash
+AlignAfterOpenBracket: AlwaysBreak
+BracedInitializerIndentWidth: 2
+ContinuationIndentWidth: 2
+AllowShortFunctionsOnASingleLine: Empty
+...
