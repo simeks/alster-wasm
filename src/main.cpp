@@ -208,8 +208,6 @@ void frame() {
 
   wgpuQueueSubmit(queue_, 1, &command_buffer);
 
-  wgpuSwapChainPresent(swapchain_);
-
   wgpuCommandBufferRelease(command_buffer);
   wgpuRenderPassEncoderRelease(pass_encoder);
   wgpuCommandEncoderRelease(command_encoder);
@@ -217,10 +215,7 @@ void frame() {
 }
 
 int main() {
-  printf("Hello, World!\n");
-  hello();
   init();
-
   emscripten_set_main_loop_arg([](void*) { frame(); }, nullptr, 0, 1);
 
   return 0;
